@@ -19,7 +19,8 @@ app.post('/todos', (req, res) => {
     newTodo.save().then((doc) => {
         res.send(doc);
     }, (e) => {
-        console.log("Unable to create Todo");
+        //console.log("Unable to create Todo");
+        res.status(400).send(e);
     })
 })
 
@@ -47,3 +48,5 @@ app.listen(3000, () => {
 // }, (e) => {
 //     console.log("Unable to create user", e);
 // })
+
+module.exports = {app};
