@@ -7,6 +7,7 @@ var {User} = require('./models/User');
 var {ObjectID} = require('mongodb');
 
 var app = express();
+CONST port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 
@@ -50,12 +51,12 @@ app.get('/todos/:id', (req, res) => {
         res.status(400).send(e);
     })
 })
-app.listen(3000, () => {
-    console.log("Server has started listening @ :3000");
+app.listen(port, () => {
+    console.log(`Server has started listening @ : ${port}`);
 })
 // var newTodo = new Todo({
 //     text: "Learn Jquery",
-//     completed: true,
+//        completed: true,
 //     completedAt: 15-05-2016
 // });
 
