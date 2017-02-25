@@ -6,8 +6,9 @@ var {Todo} = require('./models/Todo');
 var {User} = require('./models/User');
 var {ObjectID} = require('mongodb');
 
+const port = process.env.PORT || 3000;
 var app = express();
-CONST port = process.env.PORT || 3000;
+
 
 app.use(bodyParser.json());
 
