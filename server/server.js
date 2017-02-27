@@ -65,10 +65,10 @@ app.delete('/todos/:id', (req, res) => {
             res.status(400).send()
         } 
         
-         res.status(200).send(todo);
+         res.status(200).send({todo});
         
     }, (e) => {
-        res.status(400).send(e);
+        res.status(404).send(e);
     })
 })
 app.listen(port, () => {
