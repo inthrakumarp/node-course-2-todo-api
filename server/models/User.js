@@ -42,13 +42,14 @@ UserSchema.methods.toJSON = function () {
 UserSchema.methods.generateAuthToken = function() {
     var user = this;
     
-    var access = "Auth";
-    var token = jwt.sign({_id: user._id.toHexString(), access}, 'secretPassword').toString();
+    var access = 'Auth';
+    var token = jwt.sign({_id: user._id.toHexString(), access: 'Auth'}, 'secretPassword').toString();
     
     user.tokens.push({access, token} );
     
     // retun user.save... - return is used here to pass on the token value to the next chaining promise where the generateAuthToken function is called
     return user.save().then(() => {
+        // console.log(token);
         return token;
     })
 }
@@ -63,6 +64,7 @@ UserSchema.statics.findByToken = function(token){
         // return new Promise((resolve, reject) => {
         //     reject();
         // })
+        // console.log(e);
         return Promise.reject(); 
         // this single stmt is equvalent to the above commented 3 lines
     }
